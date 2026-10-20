@@ -1,0 +1,118 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green-edge: #c9efc3;      /* soft vignette at the edges */
+  --green-stripe: #d4f5cf;    /* background texture stripes */
+  --green-base-1: #f4fcf2;    /* lightest base tone */
+  --green-base-2: #e3f6df;    /* base tone, slightly deeper */
+  --green-light: #a8e6a1;     /* main light green */
+  --green-mid: #6fc27a;       /* accents, glow */
+  --green-deep: #2f6b3a;      /* button, strong accents */
+  --green-ink: #1f4d2a;       /* text */
+}
+
+.night {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1vmin);
+  background-image: radial-gradient(ellipse at top, transparent 0%, var(--green-edge)), radial-gradient(ellipse at bottom, var(--green-edge), rgba(168, 230, 161, 0.2)), repeating-linear-gradient(220deg, var(--green-stripe) 0px, var(--green-stripe) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, var(--green-stripe) 0px, var(--green-stripe) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, var(--green-stripe) 0px, var(--green-stripe) 19px, transparent 19px, transparent 22px), linear-gradient(90deg, var(--green-base-1), var(--green-base-2));
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--green-ink);
+  font-family: 'Courier New', Courier, monospace;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  letter-spacing: 0px;
+}
+
+@media (min-width: 500px) {
+  .title {
+    letter-spacing: 20px;
+  }
+}
+
+@keyframes typing {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Terapkan animasi dengan delay */
+.title span {
+  opacity: 0;
+  animation: typing 1s ease forwards;
+  animation-delay: var(--delay);
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  border: none;
+  width: 15em;
+  height: 5em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: var(--green-deep);
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+  fill: var(--green-stripe);
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: var(--green-stripe);
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg, #b9efb3, var(--green-mid));
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.5),
+    inset 0px -4px 0px 0px rgba(47, 107, 58, 0.25),
+    0px 0px 0px 4px rgba(111, 194, 122, 0.3),
+    0px 0px 180px 0px var(--green-mid);
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: var(--green-ink);
+}
+
+.btn:hover .sparkle {
+  fill: var(--green-ink);
+  transform: scale(1.2);
+}
